@@ -1,0 +1,32 @@
+void deleteAllOccurrences(int val) {
+    int count = 0;
+    if (head == nullptr) {
+        cout << "List is empty\n";
+        return;
+    }
+    while (head != nullptr && head->data == val) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        count++;
+    }
+    Node* curr = head;
+    Node* prev = nullptr;
+
+    while (curr != nullptr) {
+        if (curr->data == val) {
+            prev->next = curr->next;
+            delete curr;
+            curr = prev->next;
+            count++;
+        } else {
+            prev = curr;
+            curr = curr->next;
+        }
+    }
+
+    if (count == 0)
+        cout << "No nodes with value " << val << " found\n";
+    else
+        cout << count << " nodes with value " << val << " deleted\n";
+}
