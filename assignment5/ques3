@@ -1,0 +1,16 @@
+void findMiddle() {
+    if (head == nullptr) {
+        cout << "List is empty\n";
+        return;
+    }
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    cout << "Middle element is: " << slow->data << endl;
+}
