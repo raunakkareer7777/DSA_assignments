@@ -1,0 +1,32 @@
+// search
+bool search(Node* root, int key) {
+    if (root == nullptr)
+        return false;
+
+    if (root->data == key)
+        return true;
+    else if (key < root->data)
+        return search(root->left, key);
+    else
+        return search(root->right, key);
+}
+
+// min
+
+Node* findMin(Node* root) {
+    if (root == nullptr)
+        return nullptr;
+    while (root->left != nullptr)
+        root = root->left;
+    return root;
+}
+
+// max
+
+Node* findMax(Node* root) {
+    if (root == nullptr)
+        return nullptr;
+    while (root->right != nullptr)
+        root = root->right;
+    return root;
+}
