@@ -1,0 +1,93 @@
+vector<int> bubblesort(vector<int> &vec){
+
+    int i,j;
+    int size = vec.size();
+    bool isSwap; // for optimizing time complexity
+    for (i = 0; i < size; i++){
+        
+        isSwap = false;
+
+        for (j = 0; j < (size - i - 1); j++){
+
+            if (vec[j] > vec[j + 1]){
+
+                swap(vec[j],vec[j + 1]);
+                isSwap = true;
+            }
+        }
+        if (!isSwap){ // vector already sorted
+            return vec;
+        }
+    }
+
+    return vec;
+}
+
+vector<int> selectionsort(vector<int> &vec){
+
+    int i,j;
+    int size = vec.size();
+    int smallest_index; // index with smallest element
+
+    for (i = 0; i < (size - 1); i++){ 
+
+        smallest_index = i; // starting of unsorted array
+
+        for (j = (i + 1); j < size; j++){
+
+            if (vec[j] < vec[smallest_index]){
+
+                smallest_index = j;
+            }
+        }
+
+        swap(vec[i],vec[smallest_index]);
+    }
+
+    return vec;
+
+}
+
+vector<int> insertionsort(vector<int> &vec){
+
+    int curr;
+    int prev;
+    int size = vec.size();
+    for (int i = 1; i < size; i++){
+
+        curr = vec[i];
+        prev = i - 1;
+        
+        while (prev >= 0 && vec[prev] > curr){
+
+            vec[prev + 1] = vec[prev];
+            prev--;
+        }
+
+        vec[prev+ 1] = curr;
+    }
+
+    return vec;
+}
+void mergeSort(vector<int>& arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        
+        // Sort first and second halves
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        
+        // Merge the sorted halves
+        merge(arr, left, mid, right);
+    }
+}
+void quickSort(vector<int>& arr, int low, int high) {
+    if (low < high) {
+        // Partition the array
+        int pi = partition(arr, low, high);
+        
+        // Recursively sort elements before and after partition
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
