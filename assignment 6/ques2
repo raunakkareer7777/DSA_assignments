@@ -1,0 +1,21 @@
+
+void displayWithHeadRepeat() {
+    if (isEmpty()) {
+        cout << "List is empty!\n";
+        return;
+    }
+    
+    Node* temp = head;
+    cout << "Circular Linked List (with head repeated): ";
+    
+    do {
+        cout << temp->data;
+        temp = temp->next;
+        if (temp != head) {
+            cout << " -> ";
+        }
+    } while (temp != head);
+    
+    cout << " -> " << head->data << " -> (head)\n";
+}
+
