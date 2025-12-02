@@ -1,0 +1,46 @@
+// for doubly linkedlist
+int getSize() {
+    int count = 0;
+    Node* temp = head;
+    
+    while (temp != nullptr) {
+        count++;
+        temp = temp->next;
+    }
+    
+    return count;
+}
+// for circular linked list
+// Add this member function to your CircularLinkedList class
+int getSize() {
+    if (isEmpty()) {
+        return 0;
+    }
+    
+    int count = 0;
+    Node* temp = head;
+    
+    do {
+        count++;
+        temp = temp->next;
+    } while (temp != head);
+    
+    return count;
+}
+
+// Alternative iterative version
+int getSizeIterative() {
+    if (head == nullptr) {
+        return 0;
+    }
+    
+    Node* current = head;
+    int count = 0;
+    
+    do {
+        count++;
+        current = current->next;
+    } while (current != head);
+    
+    return count;
+}
